@@ -115,7 +115,7 @@ def using_BPNN(train_data_, test_data_):
     Layer_Num = int(input())
     Node_Num = []
     for i in range(Layer_Num):
-        print("输入", i + 1, "第层节点数：")
+        print("输入第", i + 1, "层节点数：")
         Node_Num.append(int(input()))
     print("输入学习率：")
     Lr = float(input())
