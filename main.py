@@ -122,7 +122,7 @@ def using_BPNN(train_data_, test_data_):
     print("输入迭代数：")
     Epochs = int(input())
 
-    bp = BP_NN(train_data, test_data, Layer_Num, Node_Num, Lr, Epochs)
+    bp = BP_NN(train_data_, test_data_, Layer_Num, Node_Num, Lr, Epochs)
 
 
 def using_libsvm(train_data_,test_data_):
