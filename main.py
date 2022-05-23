@@ -129,8 +129,8 @@ def using_libsvm(train_data_,test_data_):
     train_labels = np.argmax(train_data_["labels"], axis=-1)
     test_labels =np.argmax(test_data["labels"], axis=-1)
     lina_options = '-t 0 -c 1 '  # 线性核
-    model = svm_train(train_labels, train_data_["labels"], lina_options)
-    svm_predict(test_labels, test_data_["labels"], model)
+    model = svm_train(train_labels, train_data_["features"], lina_options)
+    svm_predict(test_labels, test_data_["features"], model)
 
 
 if __name__ == '__main__':
