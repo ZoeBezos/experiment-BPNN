@@ -1,4 +1,4 @@
-# BPNN-libsvm
+# BPNN
 
 + 运行环境：pycharm+python3.9   
 + 用到的包：numpy、matplotlib、libsvm、sklearn     
