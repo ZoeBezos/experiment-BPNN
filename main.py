@@ -51,7 +51,7 @@ class BP_NN:
 
     def loss(self):
         return 0.5 * np.sum(
-            (self.train_prediction - self.train_data["labels"]) * (self.train_prediction - self.train_data["labels"]))
+            (self.train_prediction - self.train_data["labels"]) ** 2)
 
     def accuracy(self):
         predict = np.argmax(self.test_prediction, axis=-1)
@@ -122,12 +122,12 @@ def using_BPNN(train_data_, test_data_):
     print("输入迭代数：")
     Epochs = int(input())
 
-    bp = BP_NN(train_data_, test_data_, Layer_Num, Node_Num, Lr, Epochs)
+    BP_NN(train_data_, test_data_, Layer_Num, Node_Num, Lr, Epochs)
 
 
-def using_libsvm(train_data_,test_data_):
+def using_libsvm(train_data_, test_data_):
     train_labels = np.argmax(train_data_["labels"], axis=-1)
-    test_labels =np.argmax(test_data["labels"], axis=-1)
+    test_labels = np.argmax(test_data["labels"], axis=-1)
     lina_options = '-t 0 -c 1 '  # 线性核
     model = svm_train(train_labels, train_data_["features"], lina_options)
     svm_predict(test_labels, test_data_["features"], model)
@@ -142,7 +142,8 @@ if __name__ == '__main__':
     target = OneHotEncoder().fit_transform(iris.get('target').reshape(iris.get('target').shape[0], 1)).toarray()
     # 使用包的方法将数据集划分为数据集和测试集
     train_data, test_data = {}, {}
-    train_data["features"], test_data["features"], train_data["labels"], test_data["labels"] = train_test_split(data, target)
+    train_data["features"], test_data["features"], train_data["labels"], test_data["labels"] = train_test_split(data,
+                                                                                                                target)
 
     using_BPNN(train_data, test_data)
     using_libsvm(train_data, test_data)
